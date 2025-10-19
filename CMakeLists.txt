@@ -27,6 +27,14 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 project(CrowDemo LANGUAGES C CXX VERSION 0.1.0)
 
+# 仅在 Linux/macOS 上启用 pthread
+if(UNIX)
+    find_package(Threads REQUIRED)
+    set(THREAD_LIB Threads::Threads)
+else()
+    set(THREAD_LIB "") # Windows 不需要 pthread
+endif()
+
 # 添加子目录
 add_subdirectory(3rd/cpp-httplib)
 add_subdirectory(application)

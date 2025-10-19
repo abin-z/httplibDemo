@@ -1,17 +1,15 @@
-set(tgt_name "webDemoApp")
 
-file(GLOB_RECURSE headers CONFIGURE_DEPENDS *.h *.hpp)
-file(GLOB_RECURSE sources CONFIGURE_DEPENDS *.c *.cpp *.cc *.cxx)
+# 定义一个函数来添加可执行文件并链接所需的库
+function(add_web_target tgt src)
+add_executable(${tgt} ${src})
+    # 链接 cpp-httplib 头文件库
+    target_link_libraries(${tgt} PRIVATE cpp-httplib)
+  if(UNIX)
+    # 链接 pthread 库（如果适用）
+    target_link_libraries(${tgt} PRIVATE ${THREAD_LIB})
+  endif()
+endfunction()
 
-add_executable(${tgt_name})
-target_sources(${tgt_name} PUBLIC ${headers})
-target_sources(${tgt_name} PRIVATE ${sources})
-
-# 仅在 Linux/macOS 上启用 pthread
-if (UNIX)
-    find_package(Threads REQUIRED)
-    target_link_libraries(${tgt_name} PRIVATE Threads::Threads)
-endif()
-
-# 链接 cpp-httplib 头文件库
-target_link_libraries(${tgt_name} PRIVATE cpp-httplib)
+# Define web server and client targets
+add_web_target(webserver server.cpp)
+add_web_target(client client.cpp)

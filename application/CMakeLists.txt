@@ -12,3 +12,6 @@ if (UNIX)
     find_package(Threads REQUIRED)
     target_link_libraries(${tgt_name} PRIVATE Threads::Threads)
 endif()
+
+# 链接 cpp-httplib 头文件库
+target_link_libraries(${tgt_name} PRIVATE cpp-httplib)

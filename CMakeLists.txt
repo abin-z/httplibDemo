@@ -28,5 +28,5 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 project(CrowDemo LANGUAGES C CXX VERSION 0.1.0)
 
 # 添加子目录
-add_subdirectory(3rd/crow)
+add_subdirectory(3rd/cpp-httplib)
 add_subdirectory(application)

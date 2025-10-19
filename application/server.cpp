@@ -3,7 +3,6 @@
 
 #include "httplib.h"
 
-
 int main()
 {
   httplib::Server svr;
@@ -112,11 +111,14 @@ int main()
   //   "version": "1.0.0"
   // }
   svr.Get("/status", [](const httplib::Request&, httplib::Response& res) {
-    std::string json = R"({
-      "status": "ok",
-      "uptime": 12345,
-      "version": "1.0.0"
-    })";
+    std::string json =
+      R"(
+{
+  "status": "ok",
+  "uptime": 12345,
+  "version": "1.0.0"
+}
+      )";
     res.set_content(json, "application/json");
   });
 

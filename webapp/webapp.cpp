@@ -67,6 +67,7 @@ class WebServer
     });
 
     // --- 4. 后端拦截 admin.html ---
+    // 使用 set_pre_routing_handler 可以在路由匹配前拦截请求
     svr.set_pre_routing_handler([&](const Request &req, Response &res) {
       if (req.path == "/admin.html")
       {

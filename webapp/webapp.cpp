@@ -18,8 +18,14 @@ class WebServer
     std::unordered_set<std::string> sessions;
     std::mutex mtx;
 
+#if defined(_WIN32) || defined(_WIN64)
+    std::string path = "E:/abin/projects/httplibDemo/webapp/www";
+#else
+    std::string path = "/home/abin/workspace/httplibDemo/webapp/www";
+#endif
+
     // --- 1. 提供静态文件目录 ---
-    svr.set_mount_point("/", "E:/abin/projects/httplibDemo/webapp/www");  // 或绝对路径
+    svr.set_mount_point("/", path);  // 或绝对路径
 
     // --- 2. 登录接口 ---
     svr.Post("/api/login", [&](const Request &req, Response &res) {

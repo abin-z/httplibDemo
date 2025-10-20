@@ -1,0 +1,61 @@
+/* 基本页面布局 */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 登录容器 */
+.login-container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    width: 300px;
+    text-align: center;
+}
+
+/* 标题 */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 输入框 */
+.login-container input {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* 登录按钮 */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #4e73df;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #2e59d9;
+}
+
+/* 提示文字 */
+.login-container p {
+    color: red;
+    font-size: 12px;
+    margin-top: 10px;
+}

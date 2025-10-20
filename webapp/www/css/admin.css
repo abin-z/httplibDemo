@@ -1,0 +1,56 @@
+/* 管理面板基础布局 */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* 顶部导航条 */
+.header {
+    background-color: #4e73df;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+}
+
+/* 主体容器 */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* 按钮样式 */
+button {
+    background-color: #1cc88a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #17a673;
+}
+
+/* 数据输出框 */
+#output {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f1f3f5;
+    border-radius: 8px;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+/* 小提示文字 */
+p {
+    color: #333;
+}

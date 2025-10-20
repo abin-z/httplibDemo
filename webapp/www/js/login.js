@@ -7,14 +7,17 @@ document.getElementById('loginBtn').addEventListener('click', function() {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: `user=${user}&pass=${pass}`
     })
-    .then(r => r.json())
+    .then(r => {
+        if (r.redirected) {
+            // 登录成功重定向
+            window.location = r.url;
+            return;
+        }
+        return r.json();
+    })
     .then(d => {
-        const msg = document.getElementById('msg');
-        if (d.ok) {
-            localStorage.setItem('token', d.token);
-            window.location = '/admin.html';  // 登录成功跳转
-        } else {
-            msg.textContent = 'Login failed: ' + (d.msg || '');
+        if (d && !d.ok) {
+            document.getElementById('msg').textContent = 'Login failed: ' + (d.msg || '');
         }
     });
 });

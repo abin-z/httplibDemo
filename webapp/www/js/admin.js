@@ -1,17 +1,10 @@
 // 加载数据接口
 document.getElementById('loadDataBtn').addEventListener('click', function() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        alert('Please login');
-        window.location = '/login.html';
-        return;
-    }
-
-    fetch('/api/data', { headers: {'Authorization': token} })
+    fetch('/api/data', { credentials: 'include' }) // 发送 cookie
       .then(r => r.json())
       .then(d => {
           if (d.error) {
-              alert('Login required');
+              alert('Unauthorized, please login');
               window.location = '/login.html';
           } else {
               document.getElementById('output').textContent = JSON.stringify(d, null, 2);

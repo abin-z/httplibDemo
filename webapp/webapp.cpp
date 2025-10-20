@@ -1,9 +1,9 @@
 #include <iostream>
 #include <mutex>
+#include <string>
 #include <unordered_set>
 
 #include "httplib.h"
-
 
 using namespace httplib;
 
@@ -19,8 +19,7 @@ class WebServer
     std::mutex mtx;
 
     // --- 1. 提供静态文件目录 ---
-    svr.set_mount_point(
-      "/", "E:/abin/projects/httplibDemo/webapp/www");  // 或绝对路径，如 "E:/abin/projects/httplibDemo/webapp/www"
+    svr.set_mount_point("/", "E:/abin/projects/httplibDemo/webapp/www");  // 或绝对路径
 
     // --- 2. 登录接口 ---
     svr.Post("/api/login", [&](const Request &req, Response &res) {
@@ -34,7 +33,9 @@ class WebServer
           std::lock_guard<std::mutex> lock(mtx);
           sessions.insert(token);
         }
-        res.set_content("{\"ok\":true,\"token\":\"" + token + "\"}", "application/json");
+        // 设置 HttpOnly cookie
+        res.set_header("Set-Cookie", "token=" + token + "; Path=/; HttpOnly");
+        res.set_redirect("/admin.html");  // 登录成功跳转
       }
       else
       {
@@ -42,28 +43,54 @@ class WebServer
       }
     });
 
-    // --- 3. 管理接口（需登录） ---
+    // --- 3. 管理接口（需登录，校验 cookie） ---
     svr.Get("/api/data", [&](const Request &req, Response &res) {
-      auto token = req.get_header_value("Authorization");
-      if (token.empty())
+      auto cookie = req.get_header_value("Cookie");
+      std::string token;
+
+      size_t pos = cookie.find("token=");
+      if (pos != std::string::npos)
       {
-        res.status = 401;
-        res.set_content("{\"error\":\"no token\"}", "application/json");
-        return;
+        size_t end = cookie.find(';', pos);
+        token = cookie.substr(pos + 6, end - pos - 6);
       }
 
       std::lock_guard<std::mutex> lock(mtx);
       if (sessions.find(token) == sessions.end())
       {
-        res.status = 403;
-        res.set_content("{\"error\":\"invalid token\"}", "application/json");
+        res.status = 401;
+        res.set_content("{\"error\":\"Unauthorized\"}", "application/json");
         return;
       }
 
       res.set_content(R"({"data":"Sensitive admin data"})", "application/json");
     });
 
-    // --- 4. 启动服务 ---
+    // --- 4. 后端拦截 admin.html ---
+    svr.set_pre_routing_handler([&](const Request &req, Response &res) {
+      if (req.path == "/admin.html")
+      {
+        auto cookie = req.get_header_value("Cookie");
+        std::string token;
+
+        size_t pos = cookie.find("token=");
+        if (pos != std::string::npos)
+        {
+          size_t end = cookie.find(';', pos);
+          token = cookie.substr(pos + 6, end - pos - 6);
+        }
+
+        std::lock_guard<std::mutex> lock(mtx);
+        if (sessions.find(token) == sessions.end())
+        {
+          res.set_redirect("/login.html");
+          return Server::HandlerResponse::Handled;
+        }
+      }
+      return Server::HandlerResponse::Unhandled;
+    });
+
+    // --- 5. 启动服务 ---
     std::cout << "✅ Server started at http://127.0.0.1:8848\n";
     svr.listen("0.0.0.0", 8848);
   }

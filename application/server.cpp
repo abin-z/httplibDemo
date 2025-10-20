@@ -1,3 +1,6 @@
+// server.cpp 演示了如何使用 cpp-httplib 创建一个简单的 HTTP 服务器，
+// 包含多个常见的请求处理示例。
+
 #include <iostream>
 #include <sstream>
 

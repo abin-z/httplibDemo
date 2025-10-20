@@ -1,3 +1,7 @@
+/*
+ * client.cpp 演示了如何使用 cpp-httplib 创建一个简单的 HTTP 客户端，
+ */
+
 #include <iostream>
 
 #include "httplib.h"

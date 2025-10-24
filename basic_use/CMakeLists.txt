@@ -11,6 +11,6 @@ add_executable(${tgt} ${src})
 endfunction()
 
 # Define web server and client targets
-add_web_target(webserver server.cpp)
+add_web_target(webserver2 server.cpp)
 add_web_target(client client.cpp)
 add_web_target(logintest logintest.cpp)

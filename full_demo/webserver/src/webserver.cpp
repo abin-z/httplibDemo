@@ -14,6 +14,7 @@
 #include "controller/temp_controller.h"
 #include "fmt/base.h"
 
+namespace fs = std::filesystem;
 WebServer::WebServer(const std::string& ip, int port) : ip_(ip), port_(port) {}
 
 WebServer::~WebServer() = default;
@@ -29,8 +30,9 @@ std::string WebServer::extract_token_from_cookie(const std::string& cookie)
 
 void WebServer::run()
 {
+  fs::path static_dir = "E:/projects/httplibDemo/full_demo/www";
   // --- 1. 提供静态文件目录 ---
-  svr_.set_mount_point("/", "E:/projects/httplibDemo/full_demo/www");
+  svr_.set_mount_point("/", static_dir.string());
 
   // --- 2. 登录接口 ---
   svr_.Post("/api/login", [&](const httplib::Request& req, httplib::Response& res) {

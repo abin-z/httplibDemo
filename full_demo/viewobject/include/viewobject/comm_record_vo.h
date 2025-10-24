@@ -11,15 +11,15 @@
 // 单条设备数据
 struct SimDeviceDataVO
 {
-    std::string id;
-    std::string sensorName;
-    std::string interfaceNo;
-    std::string interfaceAddr;
-    std::string dataTypeCode;
-    std::string dataTypeName;
-    std::string dataValue;
-    std::string dataUnit;
-    std::string collectTime;
+  std::string id;
+  std::string sensorName;
+  std::string interfaceNo;
+  std::string interfaceAddr;
+  std::string dataTypeCode;
+  std::string dataTypeName;
+  std::string dataValue;
+  std::string dataUnit;
+  std::string collectTime;
 };
 
 // 序列化宏
@@ -29,8 +29,8 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceDataVO, id, sensorName, interfaceNo,
 // data 内部结构
 struct GetCommRecordDataVO
 {
-    std::string jsonData;
-    std::vector<SimDeviceDataVO> simDeviceDataListVOList;
+  std::string jsonData;
+  std::vector<SimDeviceDataVO> simDeviceDataListVOList;
 };
 
 // 序列化宏
@@ -39,9 +39,9 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(GetCommRecordDataVO, jsonData, simDeviceDataL
 // 顶层返回结构
 struct GetCommRecordByIdVO
 {
-    int code{};
-    std::string msg;
-    GetCommRecordDataVO data;
+  int code{};
+  std::string msg;
+  GetCommRecordDataVO data;
 };
 
 // 顶层序列化宏

@@ -10,10 +10,10 @@
 
 struct SimDeviceOperationVO
 {
-    std::string deviceNo;
-    std::string operationType;
-    std::string speed;
-    std::string operation;
+  std::string deviceNo;
+  std::string operationType;
+  std::string speed;
+  std::string operation;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceOperationVO, deviceNo, operationType, speed, operation)

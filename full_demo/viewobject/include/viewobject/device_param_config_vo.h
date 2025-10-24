@@ -11,18 +11,18 @@
 // data 对象
 struct SimDeviceParamConfigDataVO
 {
-    std::string id;
-    std::string deviceId;
-    std::string deviceNo;
-    std::string configHtml;
-    std::string configJson;
-    std::string remark;
-    std::string createBy;
-    std::string createTime;
-    std::string updateBy;
-    std::string updateTime;
-    std::string delFlag;
-    std::string tenantId;
+  std::string id;
+  std::string deviceId;
+  std::string deviceNo;
+  std::string configHtml;
+  std::string configJson;
+  std::string remark;
+  std::string createBy;
+  std::string createTime;
+  std::string updateBy;
+  std::string updateTime;
+  std::string delFlag;
+  std::string tenantId;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceParamConfigDataVO, id, deviceId, deviceNo, configHtml, configJson, remark,
@@ -31,9 +31,9 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceParamConfigDataVO, id, deviceId, dev
 // 顶层
 struct SimDeviceParamConfigVO
 {
-    int code{};
-    std::string msg;
-    SimDeviceParamConfigDataVO data;
+  int code{};
+  std::string msg;
+  SimDeviceParamConfigDataVO data;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceParamConfigVO, code, msg, data)
@@ -49,18 +49,18 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceParamConfigVO, code, msg, data)
 
 struct SimDeviceParamConfigUpdateVO
 {
-    std::string id;
-    std::string deviceId;
-    std::string deviceNo;
-    std::string configHtml;
-    std::string configJson;
-    std::string remark;
-    std::string createBy;
-    std::string createTime;
-    std::string updateBy;
-    std::string updateTime;
-    std::string delFlag;
-    std::string tenantId;
+  std::string id;
+  std::string deviceId;
+  std::string deviceNo;
+  std::string configHtml;
+  std::string configJson;
+  std::string remark;
+  std::string createBy;
+  std::string createTime;
+  std::string updateBy;
+  std::string updateTime;
+  std::string delFlag;
+  std::string tenantId;
 };
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceParamConfigUpdateVO, id, deviceId, deviceNo, configHtml, configJson, remark,

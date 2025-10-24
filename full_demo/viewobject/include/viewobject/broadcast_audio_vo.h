@@ -11,21 +11,21 @@
 // 单个音频文件信息
 struct BroadcastAudioVO
 {
-    std::string id;
-    std::string soundType;
-    int fileSize{};
-    std::string fileUrl;
-    std::string operatorId;
-    std::string operatorIdName;
-    std::string remark;
-    std::string createBy;
-    std::string createTime;
-    std::string updateBy;
-    std::string updateTime;
-    std::string delFlag;
-    std::string tenantId;
-    std::string md5;
-    std::string syncStatus;
+  std::string id;
+  std::string soundType;
+  int fileSize{};
+  std::string fileUrl;
+  std::string operatorId;
+  std::string operatorIdName;
+  std::string remark;
+  std::string createBy;
+  std::string createTime;
+  std::string updateBy;
+  std::string updateTime;
+  std::string delFlag;
+  std::string tenantId;
+  std::string md5;
+  std::string syncStatus;
 };
 
 // 序列化宏
@@ -36,9 +36,9 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(BroadcastAudioVO, id, soundType, fileSize, fi
 // 顶层返回 VO
 struct BroadcastAudioListVO
 {
-    int code{};
-    std::string msg;
-    std::vector<BroadcastAudioVO> data;
+  int code{};
+  std::string msg;
+  std::vector<BroadcastAudioVO> data;
 };
 
 // 顶层序列化宏

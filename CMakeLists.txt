@@ -37,5 +37,5 @@ endif()
 
 # 添加子目录
 add_subdirectory(3rd/cpp-httplib)
-add_subdirectory(application)
+add_subdirectory(basic_use)
 add_subdirectory(webapp)

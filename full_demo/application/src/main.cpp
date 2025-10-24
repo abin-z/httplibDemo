@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
         fmt::print("Executable directory: {}\n", exe_dir.string());
 
         // webserver服务
-        WebServer server("192.168.128.128", 8848);
+        WebServer server("0.0.0.0", 8848);
         server.run(); // 会阻塞当前线程
 
         // // 启动服务器线程

@@ -1,10 +1,10 @@
 #include <fmt/core.h>
 
-#include <ghc/filesystem.hpp>
+#include <filesystem>
 
 #include "webserver/webserver.h"
 
-namespace fs = ghc::filesystem;
+namespace fs = std::filesystem;
 
 int main(int argc, char* argv[])
 {

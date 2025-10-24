@@ -1,5 +1,5 @@
 # 指定CMake最低版本要求
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 
 # 生成 compile_commands.json 文件（用于 clangd、clang-tidy 等工具）
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -9,8 +9,8 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# 设置C++标准版本为C++11，并确保严格要求此标准，不使用扩展功能
-set(CMAKE_CXX_STANDARD 11)
+# 设置C++标准版本为C++17，并确保严格要求此标准，不使用扩展功能
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -37,5 +37,8 @@ endif()
 
 # 添加子目录
 add_subdirectory(3rd/cpp-httplib)
+add_subdirectory(3rd/fmt)
+add_subdirectory(3rd/json)
 add_subdirectory(basic_use)
 add_subdirectory(webapp)
+add_subdirectory(full_demo)

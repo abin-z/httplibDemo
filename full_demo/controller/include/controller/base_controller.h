@@ -3,6 +3,10 @@
 
 #include <string>
 
+#ifdef DELETE
+#undef DELETE
+#endif
+
 enum class HttpMethod
 {
     GET,

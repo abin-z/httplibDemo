@@ -2,27 +2,28 @@
 #include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
+#include "comm_record_vo.h"
 
 /*
  * 接口名称: 分页查询
  * 接口路由: /simDeviceOriginalData/page
  */
 
-// 内部数据点
-struct SimDeviceDataVO
-{
-  std::string id;
-  std::string sensorName;
-  std::string interfaceNo;
-  std::string interfaceAddr;
-  std::string dataTypeCode;
-  std::string dataTypeName;
-  std::string dataValue;
-  std::string dataUnit;
-  std::string collectTime;
-};
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceDataVO, id, sensorName, interfaceNo, interfaceAddr, dataTypeCode,
-                                   dataTypeName, dataValue, dataUnit, collectTime)
+// // 内部数据点
+// struct SimDeviceDataVO
+// {
+//   std::string id;
+//   std::string sensorName;
+//   std::string interfaceNo;
+//   std::string interfaceAddr;
+//   std::string dataTypeCode;
+//   std::string dataTypeName;
+//   std::string dataValue;
+//   std::string dataUnit;
+//   std::string collectTime;
+// };
+// NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceDataVO, id, sensorName, interfaceNo, interfaceAddr, dataTypeCode,
+//                                    dataTypeName, dataValue, dataUnit, collectTime)
 
 // 趋势数据
 struct SimDeviceDataTrendVO
@@ -88,6 +89,7 @@ struct SimDeviceOriginalDataPageVO
   std::string countId;
   int pages = 0;
 };
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceOriginalDataPageVO::OrderVO, column, asc)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SimDeviceOriginalDataPageVO, records, total, size, current, orders, optimizeCountSql,
                                    searchCount, optimizeJoinOfCountSql, maxLimit, countId, pages)
 

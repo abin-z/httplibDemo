@@ -6,7 +6,7 @@ file(GLOB_RECURSE sources src/*.c src/*.cpp src/*.cc src/*.cxx)
 
 add_library(${tgt_name} ${headers} ${sources})
 
-target_include_directories(${tgt_name} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+target_include_directories(${tgt_name} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>)
 
 if(UNIX)
   target_link_libraries(${tgt_name} PRIVATE ${THREAD_LIB})

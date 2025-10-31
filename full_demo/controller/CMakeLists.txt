@@ -8,7 +8,7 @@ file(GLOB_RECURSE SOURCES src/*.c src/*.cpp src/*.cc src/*.cxx)
 add_library(${tgt_name} ${HEADERS} ${SOURCES})
 
 # 添加头文件路径
-target_include_directories(${tgt_name} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+target_include_directories(${tgt_name} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>)
 
 # 链接依赖库
 if(UNIX)

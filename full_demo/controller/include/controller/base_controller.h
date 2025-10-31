@@ -29,7 +29,7 @@ class BaseController
  protected:
   httplib::Server& svr_;
 
-  // 成员函数路由注册模板
+  // 成员函数路由注册模板, 方便注册成员函数
   template <typename T>
   void register_route(HttpMethod method, const std::string& path,
                       void (T::*handler)(const httplib::Request&, httplib::Response&))
